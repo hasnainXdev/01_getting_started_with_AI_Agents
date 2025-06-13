@@ -9,7 +9,6 @@ from openai.types.responses import ResponseTextDeltaEvent
 import os
 from dotenv import load_dotenv
 import random
-import chainlit as cl
 
 load_dotenv()
 
