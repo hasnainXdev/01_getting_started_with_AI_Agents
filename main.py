@@ -27,8 +27,8 @@ model = OpenAIChatCompletionsModel(
 config = RunConfig(model=model, model_provider=external_client, tracing_disabled=True)
 
 agent = Agent(
-    name="GIAIC Agent",
-    instructions="Hello! I'm your AI assistant.",
+    name="Hasnain Assistent",
+    instructions="",
     model=model,
 )
 
