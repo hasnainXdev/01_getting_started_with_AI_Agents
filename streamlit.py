@@ -10,6 +10,9 @@ from openai.types.responses import ResponseTextDeltaEvent
 import os
 from dotenv import load_dotenv
 import asyncio
+from agents import enable_verbose_stdout_logging
+
+enable_verbose_stdout_logging()
 
 # Load environment variables
 load_dotenv()
