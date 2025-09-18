@@ -37,27 +37,25 @@ config = RunConfig(
 )
 
 
-@function_tool(is_enabled=False)
-def weather_tool(city = "new york"):
-    return f"the weather in the {city} is sunny"
+@function_tool()
+def weather_tool():
+    return f"the weather in the new york is CLOUDY"
 
 
-python_agent = Agent(
-    name="Python Agent",
-    instructions="you are a expert python agent that answer questions about python programming",
-)
+@function_tool
+def greet_user(user="Hasnain"):
+    return f"Hello! {user}"
 
-python_agent_as_tool = python_agent.as_tool(
-    tool_name="Python_Agent_Tool",
-    tool_description="you are a expert python agent that answer questions about python programming",
-)
 
 agent = Agent(
     name="Hasnain Assistent",
-    instructions="you are my assistant, when you asked about python use `python_agent_tool` tool or if weather is asked use `weather_tool` tool",
+    instructions="you are my assistant, when you are asked a question always use `greet_user` tool or if weather is asked use `weather_tool` tool",
     model=model,
-    model_settings=ModelSettings(tool_choice="required"),
-    tools=[weather_tool, python_agent_as_tool],
+    model_settings=ModelSettings(
+        tool_choice="required",
+    ),
+    tool_use_behavior="stop_on_first_tool",
+    tools=[weather_tool, greet_user],
 )
 
 
